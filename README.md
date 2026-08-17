@@ -15,10 +15,23 @@ tick, producing integer-radius spherical shells of thickness 1.
 
 ## Build and run
 
+### Linux / macOS / GNU Make
+
 ```bash
 make          # L=17 by default
 make L=31     # larger lattice
+make run      # compile and run
 ```
+
+### Windows / NMake (Visual C++)
+
+```cmd
+nmake           # L=17 by default
+nmake L=31      # larger lattice
+nmake run       # compile and run
+```
+
+On Windows the executable is `carash.exe`.
 
 ## Output
 

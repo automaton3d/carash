@@ -1,21 +1,21 @@
-# CaRaSh local spherical shell experiment
+# CaRaSh local spherical shell experiment (Microsoft NMake)
 
-CC = gcc
-CFLAGS = -std=c99 -O2 -Wall -Wextra
-LDFLAGS = -lm
+CC = cl
+CFLAGS = /nologo /std:c11 /O2 /W4 /D "NOMINMAX"
 
-# Default lattice side (odd integer)
-L ?= 17
+!IFNDEF L
+L = 17
+!ENDIF
 
-all: carash
+TARGET = carash.exe
 
-carash: carash.c
-	$(CC) $(CFLAGS) -DL=$(L) -o $@ $< $(LDFLAGS)
+all: $(TARGET)
 
-run: carash
-	./carash
+$(TARGET): carash.c
+	$(CC) $(CFLAGS) /D "L=$(L)" carash.c /Fe:$(TARGET)
+
+run: $(TARGET)
+	$(TARGET)
 
 clean:
-	rm -f carash carash31 *.o
-
-.PHONY: all run clean
+	-del $(TARGET) *.obj
